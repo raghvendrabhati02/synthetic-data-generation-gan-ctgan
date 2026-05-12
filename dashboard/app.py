@@ -23,12 +23,19 @@ if st.button("Generate Data"):
     with st.spinner("Generating synthetic data..."):
 
         response = requests.get(
-            f"https://synthetic-data-generation-gan-ctgan.onrender.com"
-        )
+            f"https://synthetic-data-generation-gan-ctgan.onrender.com/generate?n={n}"
+    )
 
         data = response.json()
+        st.write(data)
+        st.write(type(data))
 
-        df = pd.DataFrame(data)
+        # Convert response properly
+        if isinstance(data, list):
+          df = pd.DataFrame(data)
+        else:
+          st.error("Invalid API response format")
+          st.stop()
 
         st.success("✅ Data generated successfully!")
 
