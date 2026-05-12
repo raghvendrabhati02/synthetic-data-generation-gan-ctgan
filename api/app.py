@@ -25,7 +25,8 @@ def home():
     return {"message": "Synthetic Data API Running"}
 
 @app.get("/generate")
-def generate_data(n: int = 100):
-    global model
-    synthetic_df = generate_ctgan(model, n_samples=n, columns=df.columns)
+def generate_data(n: int = 10):
+
+    synthetic_df = generate_ctgan(model, n_samples=n)
+
     return synthetic_df.to_dict(orient="records")
