@@ -28,4 +28,4 @@ def home():
 def generate_data(n: int = 100):
     global model
     synthetic_df = generate_ctgan(model, n_samples=n, columns=df.columns)
-    return synthetic_df.head(10).to_dict()
+    return synthetic_df.to_dict(orient="records")

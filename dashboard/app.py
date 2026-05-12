@@ -23,7 +23,7 @@ if st.button("Generate Data"):
     with st.spinner("Generating synthetic data..."):
 
         response = requests.get(
-            f"http://127.0.0.1:8000/generate?n={n}"
+            f"https://synthetic-data-generation-gan-ctgan.onrender.com"
         )
 
         data = response.json()
